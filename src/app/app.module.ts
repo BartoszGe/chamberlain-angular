@@ -8,7 +8,6 @@ import { HeaderComponent } from './header/header.component';
 import { ProductDialogComponent } from './grocery-store/product-dialog/product-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
-import {ProductStoreService} from './service/product-store.service';
 
 @NgModule({
   declarations: [

@@ -7,3 +7,8 @@
   box-shadow: none;
 }
 
+.scrollable{
+  position: relative;
+  height: 700px;
+  overflow: auto;
+}

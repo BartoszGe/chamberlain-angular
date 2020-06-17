@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductDialogComponent} from './product-dialog/product-dialog.component';
@@ -13,10 +13,12 @@ export class GroceryStoreComponent {
 
   @Input() marketProducts: Product[];
 
+  basketProducts: Product[] = [];
+
+  products: Product[] = [];
+
   constructor(private dialog: MatDialog) {
   }
-
-  basketProducts: Product[] = [];
 
   addToBasket(id: number) {
     const product = this.marketProducts.find(value => value.id === id);
@@ -34,4 +36,14 @@ export class GroceryStoreComponent {
   showProductInfo(product: Product) {
     this.dialog.open(ProductDialogComponent, {data: {dialogProduct: product}});
   }
+
+  filterProduct(product: string) {
+    if (this.products.length === 0) {
+      this.products = this.marketProducts;
+    } else {
+      this.marketProducts = this.products;
+    }
+    this.marketProducts = this.products.filter(pr => pr.name.includes(product));
+  }
+
 }
