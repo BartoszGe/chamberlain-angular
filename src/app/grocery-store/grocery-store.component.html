@@ -1,1 +1,25 @@
-<p>grocery-store works!</p>
+<div class="m-6"></div>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item bg-info text-white ">Market</li>
+      <li class="list-group-item non-select"
+          *ngFor="let product of marketProducts">
+        {{ product.name }}
+        <button (click)="showProductInfo(product)" type="button" class="btn btn-info rounded float-right">Info</button>
+        <button (click)="addToBasket(product.id)" type="button" class="btn btn-info rounded mr-2 float-right">Add</button>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item bg-info text-white">Basket</li>
+      <li class="list-group-item non-select" style="cursor: pointer"
+         *ngFor="let product of basketProducts">
+        {{ product.name }} : {{ product.amount }}
+        <button (click)="removeFromBasket(product.id)" type="button" class="btn btn-info rounded mr-2 float-right">Remove</button>
+      </li>
+    </ul>
+  </div>
+</div>
+

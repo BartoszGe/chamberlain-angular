@@ -5,16 +5,20 @@
   <title>chamberlain</title>
 </head>
 <body>
-<app-header></app-header>
+<app-header (pageSelected)="moveTo($event)" ></app-header>
 <div class="container">
-  <div class="m-10"></div>
-  <div class="row">
-    <a href="#" (click)="onSelect('recipe')"></a>
-    <img class="rounded float-left" src="assets/img/header/shopping-basket.png">
-    <img class="rounded mx-auto d-block" src="assets/img/header/trolley.png">
-    <img class="rounded float-right" src="assets/img/header/shop.png">
+  <div *ngIf="selectedPage==='index'">
+    <div class="m-10"></div>
+    <div class="row">
+      <a href="#" (click)="moveTo('grocery-store')">
+        <img class="rounded float-left" src="assets/img/header/shopping-basket.png" alt="basket">
+      </a>
+      <img class="rounded mx-auto d-block" src="assets/img/header/trolley.png" alt="courier">
+      <img class="rounded float-right" src="assets/img/header/shop.png" alt="restaurant">
+    </div>
   </div>
+
+  <app-grocery-store *ngIf="selectedPage === 'grocery-store'"></app-grocery-store>
 </div>
 </body>
 </html>
-
