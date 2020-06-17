@@ -11,14 +11,14 @@ export class AppComponent implements OnInit {
   selectedPage: string;
   products: Product[];
 
-  constructor() {
+  constructor(private productStoreService: ProductStoreService) {
   }
 
   ngOnInit(): void {
     this.selectedPage = 'index';
-    // this.productStoreService
-    //   .get()
-    //   .subscribe(products => this.products = products);
+    this.productStoreService
+      .get()
+      .subscribe(products => this.products = products);
   }
 
   moveTo(page: string) {

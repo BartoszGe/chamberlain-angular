@@ -11,12 +11,10 @@ import {ProductStoreService} from '../service/product-store.service';
 })
 export class GroceryStoreComponent {
 
-  // @Input() marketProducts: Product[];
+  @Input() marketProducts: Product[];
 
   constructor(private dialog: MatDialog) {
   }
-
-  marketProducts: Product[] = [];
 
   basketProducts: Product[] = [];
 

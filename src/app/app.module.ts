@@ -7,18 +7,21 @@ import { GroceryStoreComponent } from './grocery-store/grocery-store.component';
 import { HeaderComponent } from './header/header.component';
 import { ProductDialogComponent } from './grocery-store/product-dialog/product-dialog.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import {ProductStoreService} from './service/product-store.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     GroceryStoreComponent,
     HeaderComponent,
-    ProductDialogComponent
+    ProductDialogComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

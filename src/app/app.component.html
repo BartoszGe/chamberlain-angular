@@ -18,7 +18,10 @@
     </div>
   </div>
 
-  <app-grocery-store *ngIf="selectedPage === 'grocery-store'"></app-grocery-store>
+  <app-grocery-store
+    *ngIf="selectedPage === 'grocery-store'"
+    [marketProducts]="products"
+  ></app-grocery-store>
 </div>
 </body>
 </html>
