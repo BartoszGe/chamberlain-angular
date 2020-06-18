@@ -1,5 +1,5 @@
-import {Component, Inject, Output} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {Component, EventEmitter, Inject, Output} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {OwlDateTimeComponent} from 'ng-pick-datetime';
 import {Order} from '../../model/order.model';
 import {OrderService} from '../../service/order.service';
@@ -16,10 +16,10 @@ export interface DialogData {
 export class ShopFinalizationDialogComponent {
 
   costsWithTip: number;
-  fullPickerInput: {year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric'};
+  whenFinalized = new EventEmitter();
 
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,
+  constructor(public dialogRef: MatDialogRef<ShopFinalizationDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: DialogData,
               private orderService: OrderService) {
     this.costsWithTip = data.costs;
   }
@@ -29,9 +29,10 @@ export class ShopFinalizationDialogComponent {
   }
 
   submitShopping(deliveryPlace: string, deliveryDate: string) {
-    console.log(deliveryDate);
     const order = new Order(this.costsWithTip, deliveryDate, deliveryPlace);
     this.orderService.post(order).subscribe();
-    console.log('sended to: ' + order.deliveryPlace);
+    console.log('Sanded to: ' + order.deliveryPlace);
+    this.whenFinalized.emit();
+    this.dialogRef.close();
   }
 }

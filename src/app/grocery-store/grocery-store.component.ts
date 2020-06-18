@@ -52,7 +52,11 @@ export class GroceryStoreComponent {
   }
 
   finalizeShopping() {
-    this.dialog.open(ShopFinalizationDialogComponent, {data: {costs: this.measureProductsCost()}});
+    const dialogRef = this.dialog.open(ShopFinalizationDialogComponent, {data: {costs: this.measureProductsCost()}});
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.basketProducts = [];
+    });
   }
 
   private measureProductsCost() {

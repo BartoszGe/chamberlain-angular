@@ -17,7 +17,7 @@
       <input #tip (keyup)="addToCosts(tip.value)" type="text" class="form-control col-md-3" id="inputTip" placeholder="">
     </div>
     <h4 class="my-3">Price: {{costsWithTip}}zł</h4>
-    <button *ngIf="deliveryPlace.value && data"
+    <button *ngIf="deliveryPlace.value && date.value"
             (click)="submitShopping(deliveryPlace.value, date.value)"
             type="button"
             class="btn btn-info rounded btn-primary">Submit
