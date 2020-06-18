@@ -2,13 +2,19 @@
   margin: 5rem !important;
 }
 
-.btn:focus,.btn:active {
+.btn:focus, .btn:active {
   outline: none !important;
   box-shadow: none;
 }
 
-.scrollable{
+.scrollable {
   position: relative;
   height: 700px;
   overflow: auto;
+}
+
+.list-heaad {
+  height: 63px !important;
+  font-size: 1.8em;
+  text-align: center;
 }

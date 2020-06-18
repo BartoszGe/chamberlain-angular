@@ -2,7 +2,8 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductDialogComponent} from './product-dialog/product-dialog.component';
-import {ProductStoreService} from '../service/product-store.service';
+import {ProductRequestDialogComponent} from './product-request-dialog/product-request-dialog.component';
+import {ShopFinalizationDialogComponent} from './shop-finalization-dialog/shop-finalization-dialog.component';
 
 @Component({
   selector: 'app-grocery-store',
@@ -46,4 +47,11 @@ export class GroceryStoreComponent {
     this.marketProducts = this.products.filter(pr => pr.name.includes(product));
   }
 
+  requestNewProduct() {
+    this.dialog.open(ProductRequestDialogComponent);
+  }
+
+  finalizeShopping() {
+    this.dialog.open(ShopFinalizationDialogComponent);
+  }
 }
