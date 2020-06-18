@@ -1,8 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialogRef} from '@angular/material/dialog';
 import {ProductRequestService} from '../../service/product-request.service';
-import {ProductRequest} from '../../model/product-request.model';
-
 
 @Component({
   selector: 'app-product-request',

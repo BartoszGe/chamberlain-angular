@@ -52,6 +52,13 @@ export class GroceryStoreComponent {
   }
 
   finalizeShopping() {
-    this.dialog.open(ShopFinalizationDialogComponent);
+    this.dialog.open(ShopFinalizationDialogComponent, {data: {costs: this.measureProductsCost()}});
+  }
+
+  private measureProductsCost() {
+    let costs = 0;
+    this.basketProducts.forEach(product => costs += product.price);
+    console.log(costs);
+    return costs.toFixed(2);
   }
 }

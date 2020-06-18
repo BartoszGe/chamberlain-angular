@@ -1,1 +1,26 @@
-<p>shop-finalization-dialog works!</p>
+<h2>Finalization</h2>
+
+
+<mat-dialog-content>
+  <form>
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input #deliveryPlace type="text" class="form-control" id="inputAddress" placeholder="Polska Warszawa 00-000 Jesionowa 8">
+    </div>
+    <div class="form-group">
+      <label for="inputDate">Datetime</label>
+      <input #date [owlDateTime]="deliveryDate" [owlDateTimeTrigger]="deliveryDate" placeholder="Date Time" id="inputDate" class="form-control">
+      <owl-date-time #deliveryDate></owl-date-time>
+    </div>
+    <div class="form-group">
+      <label for="inputTip">Tip</label>
+      <input #tip (keyup)="addToCosts(tip.value)" type="text" class="form-control col-md-3" id="inputTip" placeholder="">
+    </div>
+    <h4 class="my-3">Price: {{costsWithTip}}zł</h4>
+    <button *ngIf="deliveryPlace.value && data"
+            (click)="submitShopping(deliveryPlace.value, date.value)"
+            type="button"
+            class="btn btn-info rounded btn-primary">Submit
+    </button>
+  </form>
+</mat-dialog-content>
