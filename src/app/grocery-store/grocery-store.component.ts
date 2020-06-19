@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../model/product.model';
 import {MatDialog} from '@angular/material/dialog';
-import {ProductDialogComponent} from './product-dialog/product-dialog.component';
+import {ProductDialogComponent} from '../grocery-store-utils/product-dialog/product-dialog.component';
 import {ProductRequestDialogComponent} from './product-request-dialog/product-request-dialog.component';
 import {ShopFinalizationDialogComponent} from './shop-finalization-dialog/shop-finalization-dialog.component';
 

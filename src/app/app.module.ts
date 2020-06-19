@@ -5,12 +5,14 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {AppComponent} from './app.component';
 import {GroceryStoreComponent} from './grocery-store/grocery-store.component';
 import {HeaderComponent} from './header/header.component';
-import {ProductDialogComponent} from './grocery-store/product-dialog/product-dialog.component';
+import {ProductDialogComponent} from './grocery-store-utils/product-dialog/product-dialog.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
 import {ProductRequestDialogComponent} from './grocery-store/product-request-dialog/product-request-dialog.component';
 import {ShopFinalizationDialogComponent} from './grocery-store/shop-finalization-dialog/shop-finalization-dialog.component';
 import {MomentDateTimeAdapter} from 'ng-pick-datetime/date-time/adapter/moment-adapter/moment-date-time-adapter.class';
+import {LoginDialogComponent} from './header/login-dialog/login-dialog.component';
+import {GroceryStoreManagementComponent} from './grocery-store-management/grocery-store-management.component';
 
 import {
   DateTimeAdapter,
@@ -18,7 +20,7 @@ import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule
 } from 'ng-pick-datetime';
-import { LoginDialogComponent } from './header/login-dialog/login-dialog.component';
+import {ProductCreationDialogComponent} from './grocery-store-management/product-creation-dialog/product-creation-dialog.component';
 
 export const MY_CUSTOM_FORMATS = {
   fullPickerInput: 'YYYY-MM-DD HH:mm:ss',
@@ -39,6 +41,8 @@ export const MY_CUSTOM_FORMATS = {
     ProductRequestDialogComponent,
     ShopFinalizationDialogComponent,
     LoginDialogComponent,
+    GroceryStoreManagementComponent,
+    ProductCreationDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,8 +54,8 @@ export const MY_CUSTOM_FORMATS = {
     OwlNativeDateTimeModule,
   ],
   providers: [
-    { provide: DateTimeAdapter, useClass: MomentDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE] },
-    { provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS }
+    {provide: DateTimeAdapter, useClass: MomentDateTimeAdapter, deps: [OWL_DATE_TIME_LOCALE]},
+    {provide: OWL_DATE_TIME_FORMATS, useValue: MY_CUSTOM_FORMATS}
   ],
   bootstrap: [AppComponent]
 })

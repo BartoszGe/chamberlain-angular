@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ProductStoreService} from './service/product-store.service';
+import {ProductService} from './service/product.service';
 import {Product} from './model/product.model';
 import {User} from './model/user.model';
 
@@ -13,21 +13,25 @@ export class AppComponent implements OnInit {
   user: User;
   products: Product[];
 
-  constructor(private productStoreService: ProductStoreService) {
+  constructor(private productStoreService: ProductService) {
   }
 
   ngOnInit(): void {
     this.selectedPage = 'index';
     this.productStoreService
-      .get()
+      .getAll()
       .subscribe(products => this.products = products);
   }
 
   moveTo(page: string) {
-    this.selectedPage = page;
+    if (this.user) {
+      this.selectedPage = page;
+    }
   }
 
   saveUser(user: User) {
-    this.user = user;
+    if (user) {
+      this.user = user;
+    }
   }
 }

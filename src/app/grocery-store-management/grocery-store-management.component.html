@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="m-6"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="list-group-item bg-info text-white">
+        <input #productName (keyup)="filterProduct(productName.value)" class="form-control" type="text" placeholder="Search product" aria-label="Search">
+      </div>
+      <ul class="list-group scrollable">
+        <li class="list-group-item non-select"
+            *ngFor="let product of marketProducts">
+          {{ product.name }}
+          <button (click)="showProductInfo(product)" type="button" class="btn-sm btn btn-info rounded float-right">Info</button>
+          <button (click)="removeFromMarket(product.id)" type="button" class="btn-sm btn btn-info rounded mr-2 float-right">Remove</button>
+        </li>
+        <button type="button" class="btn-sm btn btn-info rounded"
+                (click)="createProductDialog()">
+          Add new Product
+        </button>
+      </ul>
+    </div>
+  </div>
+</div>

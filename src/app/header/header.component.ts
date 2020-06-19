@@ -18,7 +18,6 @@ export class HeaderComponent {
   constructor(private dialog: MatDialog) {
   }
 
-
   moveTo(page: string) {
     this.pageSelected.emit(page);
 
@@ -29,7 +28,9 @@ export class HeaderComponent {
     dialogRef.afterClosed().subscribe(() => {
       if (this.isLogged !== dialogRef.componentInstance.isLogged) {
         this.isLogged = dialogRef.componentInstance.isLogged;
-        this.user.emit(dialogRef.componentInstance.user);
+        if (dialogRef.componentInstance.user) {
+          this.user.emit(dialogRef.componentInstance.user);
+        }
         console.log('isLogged:' + this.isLogged);
       }
     });

@@ -20,11 +20,17 @@
       <img class="rounded float-right" src="assets/img/header/shop.png" alt="restaurant">
     </div>
   </div>
+</div>
 
   <app-grocery-store
-    *ngIf="selectedPage === 'grocery-store'"
+    *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'client'"
     [marketProducts]="products"
   ></app-grocery-store>
-</div>
+
+  <app-grocery-store-management
+    *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'admin'"
+    [marketProducts]="products"
+  ></app-grocery-store-management>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 @import "~ng-pick-datetime/assets/style/picker.min.css";
 
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -82,3 +83,28 @@ a:active, a:focus {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.m-10 {
+  margin: 10rem !important;
+}
+
+.m-6 {
+  margin: 5rem !important;
+}
+
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.scrollable {
+  position: relative;
+  height: 700px;
+  overflow: auto;
+}
+
+.list-heaad {
+  height: 64px !important;
+  font-size: 1.8em;
+  text-align: center;
+}
