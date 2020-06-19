@@ -16,7 +16,7 @@ export interface DialogData {
 export class ShopFinalizationDialogComponent {
 
   costsWithTip: number;
-  whenFinalized = new EventEmitter();
+  ifFinalized = false;
 
   constructor(public dialogRef: MatDialogRef<ShopFinalizationDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -32,7 +32,7 @@ export class ShopFinalizationDialogComponent {
     const order = new Order(this.costsWithTip, deliveryDate, deliveryPlace);
     this.orderService.post(order).subscribe();
     console.log('Sanded to: ' + order.deliveryPlace);
-    this.whenFinalized.emit();
+    this.ifFinalized = true;
     this.dialogRef.close();
   }
 }

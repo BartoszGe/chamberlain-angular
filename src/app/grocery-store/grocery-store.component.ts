@@ -13,9 +13,7 @@ import {ShopFinalizationDialogComponent} from './shop-finalization-dialog/shop-f
 export class GroceryStoreComponent {
 
   @Input() marketProducts: Product[];
-
   basketProducts: Product[] = [];
-
   products: Product[] = [];
 
   constructor(private dialog: MatDialog) {
@@ -55,7 +53,9 @@ export class GroceryStoreComponent {
     const dialogRef = this.dialog.open(ShopFinalizationDialogComponent, {data: {costs: this.measureProductsCost()}});
 
     dialogRef.afterClosed().subscribe(() => {
-      this.basketProducts = [];
+      if (dialogRef.componentInstance.ifFinalized) {
+        this.basketProducts = [];
+      }
     });
   }
 

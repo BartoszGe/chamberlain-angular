@@ -16,7 +16,7 @@ export class ProductRequestDialogComponent {
 
   sendProductRequest(productName: string) {
 
-    const requestID = this.productRequestService.post(productName).subscribe(response => console.log(response));
+    const requestID = this.productRequestService.post(productName).subscribe();
     console.log('request have id: ' + requestID);
     this.dialogRef.close();
   }
