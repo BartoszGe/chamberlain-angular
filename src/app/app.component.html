@@ -5,7 +5,10 @@
   <title>chamberlain</title>
 </head>
 <body>
-<app-header (pageSelected)="moveTo($event)" ></app-header>
+<app-header (pageSelected)="moveTo($event)"
+            (user)="saveUser($event)">
+
+</app-header>
 <div class="container">
   <div *ngIf="selectedPage==='index'">
     <div class="m-10"></div>

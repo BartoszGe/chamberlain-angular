@@ -1,5 +1,12 @@
-<nav class="navbar navbar-light bg-info text-white">
+<nav class="navbar navbar-light navbar-expand-lg bg-info text-white">
   <a class="navbar-brand" href="#" (click)="moveTo('index')">
     <img src="/assets/img/logo-white.png" width="128" height="128" class="d-inline-block align-top" alt="">
   </a>
+  <div class="container">
+    <div ></div>
+    <a (click)="openLoginDialog()" style="cursor: pointer">
+      <img *ngIf=!isLogged src="/assets/img/not_login.png" alt="login" width="50" height="50">
+      <img *ngIf=isLogged src="/assets/img/login.png" alt="login" width="50" height="50">
+    </a>
+  </div>
 </nav>

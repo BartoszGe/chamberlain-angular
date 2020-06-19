@@ -1,0 +1,31 @@
+<mat-dialog-content *ngIf="!data.isLogged">
+  <h2>Log in</h2>
+  <form>
+    <div class="form-group">
+      <label for="login">Login</label>
+      <input #login
+             type="text"
+             class="form-control"
+             id="login"
+             placeholder="abc123..">
+    </div>
+    <button type="button"
+            class="btn btn-info rounded btn-primary"
+            (click)="loginUser(login.value)">
+      Log In
+    </button>
+  </form>
+
+</mat-dialog-content>
+
+
+<mat-dialog-content *ngIf="data.isLogged">
+  <form>
+    <button type="button"
+            class="btn btn-info rounded btn-primary"
+            (click)="logoutUser()">
+      Log Out
+    </button>
+  </form>
+
+</mat-dialog-content>

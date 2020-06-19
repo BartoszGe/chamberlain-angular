@@ -18,6 +18,7 @@ import {
   OwlDateTimeModule,
   OwlNativeDateTimeModule
 } from 'ng-pick-datetime';
+import { LoginDialogComponent } from './header/login-dialog/login-dialog.component';
 
 export const MY_CUSTOM_FORMATS = {
   fullPickerInput: 'YYYY-MM-DD HH:mm:ss',
@@ -37,6 +38,7 @@ export const MY_CUSTOM_FORMATS = {
     ProductDialogComponent,
     ProductRequestDialogComponent,
     ShopFinalizationDialogComponent,
+    LoginDialogComponent,
   ],
   imports: [
     BrowserModule,
