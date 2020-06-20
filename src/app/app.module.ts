@@ -22,6 +22,8 @@ import {
 } from 'ng-pick-datetime';
 import {ProductCreationDialogComponent} from './grocery-store-management/product-creation-dialog/product-creation-dialog.component';
 import { GroceryStoreCourierComponent } from './grocery-store-courier/grocery-store-courier.component';
+import { DeliveryDescriptionDialogComponent } from './grocery-store-courier/delivery-description-dialog/delivery-description-dialog.component';
+import { DeliveryFinalizationDialogComponent } from './grocery-store-courier/delivery-finalization-dialog/delivery-finalization-dialog.component';
 
 export const MY_CUSTOM_FORMATS = {
   fullPickerInput: 'YYYY-MM-DD HH:mm:ss',
@@ -44,7 +46,9 @@ export const MY_CUSTOM_FORMATS = {
     LoginDialogComponent,
     GroceryStoreManagementComponent,
     ProductCreationDialogComponent,
-    GroceryStoreCourierComponent
+    GroceryStoreCourierComponent,
+    DeliveryDescriptionDialogComponent,
+    DeliveryFinalizationDialogComponent
   ],
   imports: [
     BrowserModule,

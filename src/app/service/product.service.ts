@@ -27,10 +27,19 @@ export class ProductService {
       {params}
     );
   }
+
   public delete(id: number) {
     const params: HttpParams = new HttpParams().set('id', id.toString());
     return this.http.delete(
       `${this.URL_PREFIX}/deleteProduct`,
+      {params}
+    );
+  }
+
+  public getByOrderId(id: number): Observable<Product[]> {
+    const params: HttpParams = new HttpParams().set('id', id.toString());
+    return this.http.get<Product[]>(
+      `${this.URL_PREFIX}/productsByOrder`,
       {params}
     );
   }

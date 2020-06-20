@@ -1,0 +1,12 @@
+<h2>Finalization:</h2>
+
+<mat-dialog-content>
+  <form class="form-inline">
+    <label class="mx-sm-3 mb-2">
+      <textarea #deliveryProblem class="form-control" rows="3" placeholder="Write problems with finalization.."></textarea>
+    </label>
+    <button (click)="finalizeOrder(deliveryProblem.value)" type="button" class="btn btn-primary btn-info mb-2">Finalize</button>
+  </form>
+</mat-dialog-content>
+
+<button type="button" class="btn btn-info rounded mr-2 float-right" mat-dialog-close>Close</button>

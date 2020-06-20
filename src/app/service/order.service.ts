@@ -3,7 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Order} from '../model/order.model';
 import {HttpParamsMapper} from '../utils/http-params-mapper.util';
 import {Observable} from 'rxjs';
-import {Product} from '../model/product.model';
 import {ProductSimple} from '../model/product-simple.model';
 
 @Injectable({
@@ -35,7 +34,18 @@ export class OrderService {
 
   public getAll(): Observable<Order[]> {
     return this.http.get<Order[]>(
-      `${this.URL_PREFIX}/products`
+      `${this.URL_PREFIX}/productsNotFinalized`
     );
   }
+
+  public patchOrder(orderId: number, deliveryProblem: string) {
+    const params: HttpParams = new HttpParams()
+      .set('id', orderId.toString())
+      .set('deliveryProblem', deliveryProblem);
+
+    return this.http.patch(
+      `${this.URL_PREFIX}/finalize`,
+      {},
+      {params}
+    );  }
 }

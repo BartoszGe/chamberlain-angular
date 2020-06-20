@@ -32,7 +32,7 @@ export class ShopFinalizationDialogComponent {
   }
 
   submitShopping(deliveryPlace: string, deliveryDate: string) {
-    const order = new Order(this.costsWithTip, deliveryDate, deliveryPlace, null);
+    const order = new Order(null, this.costsWithTip, deliveryDate, deliveryPlace, null, false);
     this.orderService.post(order).subscribe(
       response =>
         this.data.productSimples.forEach(productSimple =>
