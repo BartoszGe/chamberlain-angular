@@ -21,6 +21,7 @@ import {
   OwlNativeDateTimeModule
 } from 'ng-pick-datetime';
 import {ProductCreationDialogComponent} from './grocery-store-management/product-creation-dialog/product-creation-dialog.component';
+import { GroceryStoreCourierComponent } from './grocery-store-courier/grocery-store-courier.component';
 
 export const MY_CUSTOM_FORMATS = {
   fullPickerInput: 'YYYY-MM-DD HH:mm:ss',
@@ -42,7 +43,8 @@ export const MY_CUSTOM_FORMATS = {
     ShopFinalizationDialogComponent,
     LoginDialogComponent,
     GroceryStoreManagementComponent,
-    ProductCreationDialogComponent
+    ProductCreationDialogComponent,
+    GroceryStoreCourierComponent
   ],
   imports: [
     BrowserModule,

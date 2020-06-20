@@ -27,5 +27,12 @@ export class ProductService {
       {params}
     );
   }
+  public delete(id: number) {
+    const params: HttpParams = new HttpParams().set('id', id.toString());
+    return this.http.delete(
+      `${this.URL_PREFIX}/deleteProduct`,
+      {params}
+    );
+  }
 
 }

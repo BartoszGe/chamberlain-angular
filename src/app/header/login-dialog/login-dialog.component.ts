@@ -36,6 +36,7 @@ export class LoginDialogComponent {
 
   logoutUser() {
     this.isLogged = false;
+    window.location.reload();
     this.dialogRef.close();
   }
 }

@@ -22,15 +22,23 @@
   </div>
 </div>
 
-  <app-grocery-store
-    *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'client'"
-    [marketProducts]="products"
-  ></app-grocery-store>
+<app-grocery-store
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'client'"
+  [marketProducts]="products"
+  (changedOrders)="updateOrders($event)"
+></app-grocery-store>
 
-  <app-grocery-store-management
-    *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'admin'"
-    [marketProducts]="products"
-  ></app-grocery-store-management>
+<app-grocery-store-management
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'admin'"
+  [marketProducts]="products"
+  (marketProductsChanged)="updateProducts($event)"
+></app-grocery-store-management>
+
+<app-grocery-store-courier
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'courier'"
+  [orders]="orders"
+  (changedOrders)="updateOrders($event)"
+></app-grocery-store-courier>
 
 </body>
 </html>

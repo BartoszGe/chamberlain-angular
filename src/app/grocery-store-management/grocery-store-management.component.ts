@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from '../model/product.model';
 import {ProductDialogComponent} from '../grocery-store-utils/product-dialog/product-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
@@ -12,6 +12,7 @@ import {ProductCreationDialogComponent} from './product-creation-dialog/product-
 })
 export class GroceryStoreManagementComponent {
 
+  @Output() marketProductsChanged = new EventEmitter<Product[]>();
   @Input() marketProducts: Product[];
   marketProductsFiltered: Product[] = [];
 
@@ -33,16 +34,24 @@ export class GroceryStoreManagementComponent {
   }
 
   removeFromMarket(id: number) {
-
+    this.productStoreService.delete(id).subscribe(() => {
+      this.refreshProducts();
+    });
 
   }
 
   createProductDialog() {
     const dialogRef = this.dialog.open(ProductCreationDialogComponent);
     dialogRef.afterClosed().subscribe(() => {
-      this.productStoreService.getAll().subscribe(response => {
-        this.marketProductsFiltered = response;
-      });
+      this.refreshProducts();
+    });
+  }
+
+  private refreshProducts() {
+    this.productStoreService.getAll().subscribe(response => {
+      this.marketProducts = response;
+      this.marketProductsFiltered = response;
+      this.marketProductsChanged.emit(response);
     });
   }
 }

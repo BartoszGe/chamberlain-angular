@@ -1,9 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../model/product.model';
 import {MatDialog} from '@angular/material/dialog';
 import {ProductDialogComponent} from '../grocery-store-utils/product-dialog/product-dialog.component';
 import {ProductRequestDialogComponent} from './product-request-dialog/product-request-dialog.component';
 import {ShopFinalizationDialogComponent} from './shop-finalization-dialog/shop-finalization-dialog.component';
+import {Order} from '../model/order.model';
+import {OrderService} from '../service/order.service';
+import {ProductSimple} from '../model/product-simple.model';
 
 @Component({
   selector: 'app-grocery-store',
@@ -12,11 +15,14 @@ import {ShopFinalizationDialogComponent} from './shop-finalization-dialog/shop-f
 })
 export class GroceryStoreComponent {
 
+  @Output() changedOrders = new EventEmitter<Order[]>();
   @Input() marketProducts: Product[];
   basketProducts: Product[] = [];
   products: Product[] = [];
+  productSimples: ProductSimple[] = [];
 
-  constructor(private dialog: MatDialog) {
+  constructor(private dialog: MatDialog,
+              private orderService: OrderService) {
   }
 
   addToBasket(id: number) {
@@ -50,11 +56,21 @@ export class GroceryStoreComponent {
   }
 
   finalizeShopping() {
-    const dialogRef = this.dialog.open(ShopFinalizationDialogComponent, {data: {costs: this.measureProductsCost()}});
+    this.createProductSimples();
+    const dialogRef = this.dialog.open(ShopFinalizationDialogComponent,
+      {
+        data:
+          {
+            costs: this.measureProductsCost(),
+            productSimples: this.productSimples
+          }
+      });
 
     dialogRef.afterClosed().subscribe(() => {
       if (dialogRef.componentInstance.ifFinalized) {
         this.basketProducts = [];
+        this.productSimples = [];
+        this.orderService.getAll().subscribe(response => this.changedOrders.emit(response));
       }
     });
   }
@@ -64,5 +80,9 @@ export class GroceryStoreComponent {
     this.basketProducts.forEach(product => costs += product.price);
     console.log(costs);
     return costs.toFixed(2);
+  }
+
+  private createProductSimples() {
+    this.basketProducts.map(product => this.productSimples.push(new ProductSimple(product.id, product.amount, null)));
   }
 }
