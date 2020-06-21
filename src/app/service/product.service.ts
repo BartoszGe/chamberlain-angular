@@ -15,7 +15,7 @@ export class ProductService {
 
   public getAll(): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `${this.URL_PREFIX}/products`
+      `${this.URL_PREFIX}/productsNotDeprecated`
     );
   }
 
