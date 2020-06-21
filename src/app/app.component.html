@@ -5,16 +5,40 @@
   <title>chamberlain</title>
 </head>
 <body>
-<app-header></app-header>
+<app-header (pageSelected)="moveTo($event)"
+            (user)="saveUser($event)">
+
+</app-header>
 <div class="container">
-  <div class="m-10"></div>
-  <div class="row">
-    <a href="#" (click)="onSelect('recipe')"></a>
-    <img class="rounded float-left" src="assets/img/header/shopping-basket.png">
-    <img class="rounded mx-auto d-block" src="assets/img/header/trolley.png">
-    <img class="rounded float-right" src="assets/img/header/shop.png">
+  <div *ngIf="selectedPage==='index'">
+    <div class="m-10"></div>
+    <div class="row">
+      <a href="#" (click)="moveTo('grocery-store')">
+        <img class="rounded float-left" src="assets/img/header/shopping-basket.png" alt="basket">
+      </a>
+      <img class="rounded mx-auto d-block" src="assets/img/header/trolley.png" alt="courier">
+      <img class="rounded float-right" src="assets/img/header/shop.png" alt="restaurant">
+    </div>
   </div>
 </div>
+
+<app-grocery-store
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'client'"
+  [marketProducts]="products"
+  (changedOrders)="updateOrders($event)"
+></app-grocery-store>
+
+<app-grocery-store-management
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'admin'"
+  [marketProducts]="products"
+  (marketProductsChanged)="updateProducts($event)"
+></app-grocery-store-management>
+
+<app-grocery-store-courier
+  *ngIf="selectedPage === 'grocery-store' && user.permissionType === 'courier'"
+  [orders]="orders"
+  (changedOrders)="updateOrders($event)"
+></app-grocery-store-courier>
+
 </body>
 </html>
-

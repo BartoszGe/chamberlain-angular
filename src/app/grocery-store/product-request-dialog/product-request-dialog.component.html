@@ -1,0 +1,12 @@
+<h2>Product request:</h2>
+
+<mat-dialog-content>
+  <form class="form-inline">
+    <label class="mx-sm-3 mb-2">
+      <input #productName (keyup.enter)="sendProductRequest(productName.value)" class="form-control" type="text" placeholder="New Product Request">
+    </label>
+    <button (click)="sendProductRequest(productName.value)" type="button" class="btn btn-primary btn-info mb-2">Send request</button>
+  </form>
+</mat-dialog-content>
+
+<button type="button" class="btn btn-info rounded mr-2 float-right" mat-dialog-close>Close</button>

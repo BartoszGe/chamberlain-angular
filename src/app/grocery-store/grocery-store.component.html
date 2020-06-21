@@ -1,1 +1,38 @@
-<p>grocery-store works!</p>
+<div class="container">
+
+  <div class="m-6"></div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="list-group-item bg-info text-white">
+        <input #productName (keyup)="filterProduct(productName.value)" class="form-control" type="text" placeholder="Search product" aria-label="Search">
+      </div>
+      <ul class="list-group scrollable">
+        <li class="list-group-item non-select"
+            *ngFor="let product of marketProducts">
+          {{ product.name }}
+          <button (click)="showProductInfo(product)" type="button" class="btn-sm btn btn-info rounded float-right">Info</button>
+          <button (click)="addToBasket(product.id)" type="button" class="btn-sm btn btn-info rounded mr-2 float-right">Add</button>
+        </li>
+        <button type="button" class="btn-sm btn btn-info rounded"
+                (click)="requestNewProduct()"
+        >Product Request
+        </button>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div class="list-heaad list-group-item bg-info text-white">Basket</div>
+      <ul class="list-group scrollable">
+        <li class="list-group-item non-select" style="cursor: pointer"
+            *ngFor="let product of basketProducts">
+          {{ product.name }} : {{ product.amount }}/{{ product.measureType }}
+          <button (click)="removeFromBasket(product.id)" type="button" class="btn-sm btn btn-info rounded mr-2 float-right">Remove</button>
+        </li>
+        <button type="button" class="btn-sm btn btn-info rounded"
+                (click)="finalizeShopping()"
+                *ngIf="basketProducts.length > 0">
+          Finalize Shopping
+        </button>
+      </ul>
+    </div>
+  </div>
+</div>

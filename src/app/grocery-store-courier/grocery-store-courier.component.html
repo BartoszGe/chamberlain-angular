@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="m-6"></div>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group scrollable">
+        <li class="list-group-item non-select"
+            *ngFor="let order of orders">
+          {{ order.deliveryPlace }} | {{ order.deliveryTime }}
+          <button (click)="showDeliveryFinalizationDialog(order.id)" type="button" class="btn-sm btn btn-info rounded float-right">Complete Order</button>
+          <button (click)="showDeliveryDescriptionDialog(order.id)" type="button" class="btn-sm btn btn-info rounded mr-2 float-right">Show Basket</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
